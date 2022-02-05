@@ -19,3 +19,10 @@ export const parseCookies = (req) => {
 export const checkAdmin = (user) => {
   return user === 'Admin' ? true : false;
 };
+
+// SORT ARRAY BASED ON DATE!
+export const sortByDate = (data) => {
+  return data.sort(
+    (a, b) => new Date(b.published_at) - new Date(a.published_at)
+  );
+};

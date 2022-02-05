@@ -2,11 +2,10 @@ import Seo from '../components/utils/Seo';
 import Banner from '../components/home/Banner';
 import { API_URL } from '../config';
 import Products from '../components/home/Products';
+import { sortByDate } from '../helpers';
 
 const index = ({ data }) => {
-  const products = data.sort(
-    (a, b) => new Date(b.published_at) - new Date(a.published_at)
-  );
+  const products = sortByDate(data);
 
   return (
     <>

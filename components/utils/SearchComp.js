@@ -28,7 +28,7 @@ const SearchComp = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button className='bg-green-600 text-white rounded-tr-sm rounded-br-sm p-[0.52rem] md:absolute md:top-[0.73rem] text-sm'>
+        <button className='bg-green-600 text-white rounded-tr-sm rounded-br-sm p-[0.52rem] text-sm relative bottom-[0.1rem]'>
           SEARCH
         </button>
       </form>

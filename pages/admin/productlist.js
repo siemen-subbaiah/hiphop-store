@@ -3,10 +3,12 @@ import React from 'react';
 import ProductTable from '../../components/admin/ProductTable';
 import Seo from '../../components/utils/Seo';
 import { API_URL } from '../../config';
-import { parseCookies } from '../../helpers';
+import { parseCookies, sortByDate } from '../../helpers';
 import { MdAdd } from 'react-icons/md';
 
 const ProductListPage = ({ data }) => {
+  const products = sortByDate(data);
+
   return (
     <>
       <Seo title='Product List' />
@@ -21,7 +23,7 @@ const ProductListPage = ({ data }) => {
           </Link>
         </div>
         <div className='my-5'>
-          <ProductTable products={data} />
+          <ProductTable products={products} />
         </div>
       </div>
     </>

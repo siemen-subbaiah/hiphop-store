@@ -1,16 +1,18 @@
 import AdminOrderTable from '../../components/admin/AdminOrderTable';
 import Seo from '../../components/utils/Seo';
 import { API_URL } from '../../config';
-import { parseCookies } from '../../helpers';
+import { parseCookies, sortByDate } from '../../helpers';
 
 const OrderListPage = ({ data }) => {
+  const orders = sortByDate(data);
+
   return (
     <>
       <Seo title='Order List' />
       <div className='container mx-auto md:px-20 px-4'>
         <h1 className='text-3xl'>ORDERS</h1>
         <div className='my-5'>
-          <AdminOrderTable orders={data} />
+          <AdminOrderTable orders={orders} />
         </div>
       </div>
     </>

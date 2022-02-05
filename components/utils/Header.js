@@ -7,14 +7,20 @@ import SearchComp from './SearchComp';
 import { logout } from '../../src/features/auth/authReducer';
 import { useRouter } from 'next/router';
 import { clearCart } from '../../src/features/cart/cartReducer';
+import {
+  toggleFunc,
+  toggleFalseFunc,
+} from '../../src/features/header/headerReducer';
 import AdminModal from '../admin/AdminModal';
 
 const Header = () => {
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
 
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   const { user } = useSelector((state) => state.auth);
+
+  const { toggle } = useSelector((state) => state.headerToggle);
 
   const router = useRouter();
 
@@ -34,7 +40,7 @@ const Header = () => {
       </div>
       <MdMenu
         className='h-8 w-8 absolute right-2 top-5 md:hidden cursor-pointer'
-        onClick={() => setToggle(!toggle)}
+        onClick={() => dispatch(toggleFunc())}
       />
       <ul
         className={` md:flex items-center md:gap-20 ${
@@ -43,7 +49,7 @@ const Header = () => {
       >
         <li
           className='my-5 md:my-0 flex items-center gap-2 cursor-pointer'
-          onClick={() => setToggle(false)}
+          onClick={() => dispatch(toggleFalseFunc())}
         >
           <MdShoppingCart className='h-4 w-4' />
           <Link href='/cart' passHref={true}>
@@ -59,7 +65,7 @@ const Header = () => {
           >
             <Link href='/account/profile'>Account</Link>
           </li> */}
-            <li className='my-5 md:my-0 hidden md:block'>
+            <li className='my-5 md:my-0 md:block'>
               <AdminModal />
             </li>
           </>
@@ -68,14 +74,14 @@ const Header = () => {
           <>
             <li
               className='my-5 md:my-0 md:hidden'
-              onClick={() => setToggle(false)}
+              onClick={() => dispatch(toggleFalseFunc())}
             >
               <Link href='/account/profile'>Account</Link>
             </li>
             <li
               className='my-5 md:my-0 md:hidden'
               onClick={() => {
-                setToggle(!toggle);
+                dispatch(toggleFalseFunc());
                 dispatch(clearCart());
                 typeof window !== 'undefined' &&
                   localStorage.removeItem('shippingAddress');
@@ -93,7 +99,7 @@ const Header = () => {
           <>
             <li
               className='my-5 md:my-0 flex items-center gap-2'
-              onClick={() => setToggle(false)}
+              onClick={() => dispatch(toggleFalseFunc())}
             >
               <MdLogin className='h-4 w-4' />
               <Link href='/account/login'>Sign in</Link>

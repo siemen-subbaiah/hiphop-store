@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OrderTable from '../../components/orders/OrderTable';
 import Seo from '../../components/utils/Seo';
 import { API_URL } from '../../config';
-import { parseCookies } from '../../helpers';
+import { parseCookies, sortByDate } from '../../helpers';
 import { updateUserProfile } from '../../src/features/auth/authReducer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,9 +16,7 @@ const ProfilePage = ({ token, data }) => {
 
   const dispatch = useDispatch();
 
-  const orders = data.sort(
-    (a, b) => new Date(b.published_at) - new Date(a.published_at)
-  );
+  const orders = sortByDate(data);
 
   useEffect(() => {
     if (isError) {
