@@ -7,6 +7,7 @@ import { parseCookies } from '../../helpers';
 import slugify from 'slugify';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { IoMdAlert } from 'react-icons/io';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loadStripe } from '@stripe/stripe-js';
@@ -93,10 +94,15 @@ const OrderDetailsPage = ({ data, token }) => {
           <span className='font-semibold'>ORDER:</span> {data.uuid}
         </h1>
 
+        {/* <IoAlertCircleSharp className='h-5 w-6' /> */}
+
         <div className='md:grid grid-cols-12 gap-10'>
           <div className='col-span-8'>
             <div className='bg-gray-200 rounded-xl p-3 my-8'>
-              <h1 className='text-xl'>ORDER PROCESSING INFO : </h1>
+              <div className='text-xl flex gap-2 items-center'>
+                <IoMdAlert className='h-5 w-5' />
+                <h1>ORDER PROCESSING INFO :</h1>
+              </div>
               <p className='my-3'>
                 Admin can set this order status as delivered if payment is
                 complete.

@@ -109,11 +109,14 @@ const CartPage = ({ token }) => {
                 );
               })}
             </div>
-            <div className='my-10 flex justify-between'>
+            <div className='my-10 md:flex items-center justify-between'>
               <Link href='/'>
                 <a className='btn bg-blue-500'>Continue Shopping</a>
               </Link>
-              <button className='btn' onClick={() => dispatch(clearCart())}>
+              <button
+                className='btn my-5 md:my-0'
+                onClick={() => dispatch(clearCart())}
+              >
                 Clear Cart
               </button>
             </div>
