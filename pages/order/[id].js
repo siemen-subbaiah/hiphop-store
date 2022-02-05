@@ -89,7 +89,9 @@ const OrderDetailsPage = ({ data, token }) => {
     <>
       <Seo title='Order Summary' />
       <div className='container mx-auto md:px-20 px-4 my-5'>
-        <h1 className='text-3xl my-5'>ORDER: {data.uuid}</h1>
+        <h1 className='text-3xl my-5'>
+          <span className='font-semibold'>ORDER:</span> {data.uuid}
+        </h1>
 
         <div className='md:grid grid-cols-12 gap-10'>
           <div className='col-span-8'>
@@ -101,11 +103,16 @@ const OrderDetailsPage = ({ data, token }) => {
               </p>
             </div>
             <hr />
-            <h1 className='text-xl my-2'>SHIPPING</h1>
-            <p className='my-2 text-md'>Name : {data?.user?.username}</p>
-            <p className='my-2 text-md'>Email : {data?.user?.email}</p>
+            <h1 className='text-2xl my-2'>SHIPPING</h1>
             <p className='my-2 text-md'>
-              Address :{' '}
+              <span className='font-semibold'>Name :</span>{' '}
+              {data?.user?.username}
+            </p>
+            <p className='my-2 text-md'>
+              <span className='font-semibold'>Email :</span> {data?.user?.email}
+            </p>
+            <p className='my-2 text-md'>
+              <span className='font-semibold'>Address :</span>{' '}
               {`${data?.shippingAddress?.address}, ${data?.shippingAddress?.city} ${data?.shippingAddress?.postalCode}, ${data?.shippingAddress?.country}`}
             </p>
             <hr />
@@ -118,12 +125,29 @@ const OrderDetailsPage = ({ data, token }) => {
             >
               <p className='text-lg'>
                 Order Status :{' '}
-                {data?.isDelivered
-                  ? 'Delivered'
-                  : 'Not yet delivered Delivered'}
+                {data?.isDelivered ? 'Delivered' : 'Not yet Delivered'}
               </p>
             </div>
             <hr />
+            <div className='my-2'>
+              <h1 className='text-2xl'>PAYMENT METHOD</h1>
+              <p className='my-2'>
+                <span className='font-semibold'>Method:</span> Debit card
+              </p>
+              <div
+                className={`my-4 ${
+                  data?.isPaid ? 'bg-green-300' : 'bg-red-300'
+                } ${
+                  data?.isPaid ? 'text-[#10516c]' : 'text-[#712b29] '
+                } p-3 rounded-lg`}
+              >
+                <p className='text-lg'>
+                  Payment Status : {data?.isPaid ? 'Paid' : 'Not yet Paid'}
+                </p>
+              </div>
+            </div>
+            <hr />
+
             <div className='my-3'>
               <h1 className='text-xl my-2'>ORDER ITEMS</h1>
               {data?.items?.map((item) => {

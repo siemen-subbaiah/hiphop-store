@@ -243,7 +243,7 @@ const EditProductPage = ({ token, data }) => {
             Is Available
           </label>
           {loading ? (
-            <button disabled className='btn bg-orange-700 my-3 w-full'>
+            <button disabled className='btn opacity-70 my-3 w-full'>
               HOLD ON...
             </button>
           ) : (

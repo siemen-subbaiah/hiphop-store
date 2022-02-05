@@ -6,8 +6,6 @@ import { parseCookies, sortByDate } from '../../helpers';
 const UserListPage = ({ data }) => {
   const users = sortByDate(data);
 
-  console.log(users);
-
   return (
     <>
       <Seo title='User List' />

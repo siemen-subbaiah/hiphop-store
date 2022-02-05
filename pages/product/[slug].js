@@ -175,7 +175,7 @@ const ProductDetailsPage = ({ info }) => {
         <h1 className='text-2xl my-3 text-gray-600'>WRITE A CUSTOMER REVIEW</h1>
 
         {!user ? (
-          <div className='bg-blue-200 p-3 rounded-sm w-1/4 my-5'>
+          <div className='bg-blue-200 p-3 rounded-sm md:w-1/4 my-5'>
             <span className='text-[#10516c]'>
               Please{' '}
               <Link href='/account/login'>

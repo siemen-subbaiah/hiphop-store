@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdOutlineCancel, MdCheckCircleOutline } from 'react-icons/md';
 import moment from 'moment';
 import Link from 'next/link';
@@ -50,6 +49,7 @@ const OrderTable = ({ orders }) => {
               </thead>
               <tbody>
                 {orders?.map((order) => {
+                  console.log(order);
                   return (
                     <tr className='bg-gray-100 border-b' key={order?.id}>
                       <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
@@ -59,7 +59,7 @@ const OrderTable = ({ orders }) => {
                         {moment(order?.published_at).format('DD-MM-YYYY')}
                       </td>
                       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
-                        {order?.total}
+                        ₹ {order?.total}
                       </td>
                       <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
                         {order?.isPaid ? (

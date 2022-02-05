@@ -55,10 +55,10 @@ const CartPage = ({ token }) => {
             </div>
             <hr />
             <div className='grid md:grid-cols-5 grid-cols-1 my-5 md:place-items-center'>
-              {cartItems.map((item) => {
+              {cartItems.map((item, i) => {
                 return (
                   <>
-                    <div className='flex items-center md:my-8 mt-10'>
+                    <div className='flex items-center md:my-8 mt-10' key={i}>
                       <Image
                         src={item.image}
                         blurDataURL={item.image}

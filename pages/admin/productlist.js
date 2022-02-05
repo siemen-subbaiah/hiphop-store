@@ -13,10 +13,10 @@ const ProductListPage = ({ data }) => {
     <>
       <Seo title='Product List' />
       <div className='container mx-auto md:px-20 px-4'>
-        <div className='flex justify-between items-center'>
+        <div className='md:flex justify-between items-center'>
           <h1 className='text-3xl my-7'>PRODUCTS</h1>
           <Link href='/admin/product/new'>
-            <a className='btn flex items-center gap-2'>
+            <a className='btn flex items-center py-3 md:py-2 gap-2'>
               <MdAdd className='h-5 w-5' />
               <span>CREATE PRODUCT</span>
             </a>

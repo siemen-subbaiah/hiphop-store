@@ -99,7 +99,7 @@ const RegisterPage = () => {
             onChange={(e) => setconfirmPassword(e.target.value)}
           />
           {isLoading ? (
-            <button disabled className='btn my-3 w-full'>
+            <button disabled className='btn my-3 w-full opacity-70'>
               LOADING...
             </button>
           ) : (

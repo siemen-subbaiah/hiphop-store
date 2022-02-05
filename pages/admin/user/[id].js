@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
-import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import Seo from '../../../components/utils/Seo';
 import { API_URL } from '../../../config';
 import { parseCookies } from '../../../helpers';

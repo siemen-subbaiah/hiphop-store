@@ -70,9 +70,9 @@ const PlaceOrderPage = ({ token }) => {
       <div className='container mx-auto md:px-20 px-4 my-5'>
         <div className='md:grid grid-cols-12 gap-10'>
           <div className='col-span-8'>
-            <h1 className='text-3xl my-2'>SHIPPING</h1>
+            <h1 className='text-3xl my-3'>SHIPPING</h1>
             <p className='my-2 text-md'>
-              Address :{' '}
+              <span className='font-semibold'>Address</span> :{' '}
               {`${shippingAddress?.address}, ${shippingAddress?.city} ${shippingAddress?.postalCode}, ${shippingAddress?.country}`}
             </p>
             <hr />
@@ -137,9 +137,11 @@ const PlaceOrderPage = ({ token }) => {
             </div>
           </div>
         </div>
-        <Link href='/shipping'>
-          <a className='btn'>BACK</a>
-        </Link>
+        <div className='my-5'>
+          <Link href='/shipping'>
+            <a className='btn'>BACK</a>
+          </Link>
+        </div>
       </div>
     </>
   );
