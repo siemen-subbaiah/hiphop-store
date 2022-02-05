@@ -55,6 +55,7 @@ const ProductDetailsPage = ({ info }) => {
               height={500}
               width={500}
               placeholder='blur'
+              alt={info?.name}
             />
             <hr />
             <div className='flex gap-2 my-2 mb-10 md:mb-0 items-center'>
@@ -73,6 +74,7 @@ const ProductDetailsPage = ({ info }) => {
                       width={100}
                       placeholder='blur'
                       onClick={() => setIndex(i)}
+                      alt='product'
                     />
                   </div>
                 );
@@ -168,7 +170,7 @@ const ProductDetailsPage = ({ info }) => {
             <hr className='my-2' />
           </div>
         ) : (
-          info?.reviews?.map((item) => <Reviews review={item} />)
+          info?.reviews?.map((item) => <Reviews review={item} key={item.id} />)
         )}
         <h1 className='text-2xl my-3 text-gray-600'>WRITE A CUSTOMER REVIEW</h1>
 

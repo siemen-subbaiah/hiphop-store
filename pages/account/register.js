@@ -38,7 +38,7 @@ const RegisterPage = () => {
     }
 
     // dispatch(reset());
-  }, [isError, isSuccess, user]);
+  }, [isError, isSuccess, user, message, router]);
 
   const handleRegister = (e) => {
     e.preventDefault();

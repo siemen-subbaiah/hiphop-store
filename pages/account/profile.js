@@ -8,7 +8,7 @@ import { updateUserProfile } from '../../src/features/auth/authReducer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const profile = ({ token, data }) => {
+const ProfilePage = ({ token, data }) => {
   const { isError, user, message } = useSelector((state) => state.auth);
 
   const [name, setName] = useState(user?.username);
@@ -24,7 +24,7 @@ const profile = ({ token, data }) => {
     if (isError) {
       toast.error(message);
     }
-  }, [isError]);
+  }, [isError, message]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -110,4 +110,4 @@ export const getServerSideProps = async ({ req }) => {
   };
 };
 
-export default profile;
+export default ProfilePage;

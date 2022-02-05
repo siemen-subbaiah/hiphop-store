@@ -32,7 +32,7 @@ const LoginPage = () => {
     }
 
     // dispatch(reset());
-  }, [isError, isSuccess, user]);
+  }, [isError, isSuccess, user, message, router]);
 
   const handleLogin = (e) => {
     e.preventDefault();

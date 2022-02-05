@@ -7,7 +7,7 @@ import Header from '../utils/Header';
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(checkUserLoggedIn()), []);
+  useEffect(() => dispatch(checkUserLoggedIn()), [dispatch]);
 
   return (
     <div className='font-poppins flex flex-col h-screen justify-between'>

@@ -15,6 +15,7 @@ const Products = ({ item }) => {
             blurDataURL={item?.image[0]?.url}
             placeholder='blur'
             height={300}
+            alt={item?.name}
             width={300}
           />
           <div className='bg-white p-3 rounded-md shadow-md'>

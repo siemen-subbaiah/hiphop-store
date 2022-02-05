@@ -200,6 +200,7 @@ const EditProductPage = ({ token, data }) => {
                     height={100}
                     width={100}
                     placeholder='blur'
+                    alt='product'
                   />
                   <MdDelete
                     className='h-4 w-4 my-2 text-red-500 cursor-pointer'

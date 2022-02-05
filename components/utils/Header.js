@@ -46,7 +46,7 @@ const Header = () => {
           onClick={() => setToggle(false)}
         >
           <MdShoppingCart className='h-4 w-4' />
-          <Link href='/cart'>
+          <Link href='/cart' passHref={true}>
             <span>Cart {cartItems.length > 0 && `(${cartItems.length})`}</span>
           </Link>
         </li>
