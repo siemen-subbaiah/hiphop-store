@@ -24,8 +24,6 @@ const OrderDetailsPage = ({ data, token }) => {
 
   const { id } = router.query;
 
-  console.log(status);
-
   const checkAdmin = user?.role?.name === 'Admin' ? true : false;
 
   const handleDelivery = async () => {

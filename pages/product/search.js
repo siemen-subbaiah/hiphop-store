@@ -9,8 +9,6 @@ const SearchPage = ({ searchTerm }) => {
     query: { term },
   } = useRouter();
 
-  console.log(searchTerm);
-
   return (
     <>
       <Seo title='Search' />
