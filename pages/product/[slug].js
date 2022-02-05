@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import Rating from '../../components/home/Rating';
 import Reviews from '../../components/home/Reviews';
 import Seo from '../../components/utils/Seo';
