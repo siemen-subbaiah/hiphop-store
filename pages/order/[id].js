@@ -48,7 +48,7 @@ const OrderDetailsPage = ({ data, token }) => {
   const createCheckOutSession = async () => {
     // setLoading(true);
 
-    const items = data?.items;
+    // const items = data?.items;
 
     const stripe = await stripePromise;
     const checkoutSession = await fetch(
@@ -56,7 +56,7 @@ const OrderDetailsPage = ({ data, token }) => {
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, id }),
+        body: JSON.stringify({ items: data?.items, id }),
       }
     );
     const datar = await checkoutSession.json();
