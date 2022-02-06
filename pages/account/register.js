@@ -113,17 +113,14 @@ const RegisterPage = () => {
             <a className='underline'>Login</a>
           </Link>
         </span>
-        <div className='my-5 flex items-center gap-2'>
-          <IoMdAlert className='h-5 w-5' />
-          <p>
-            Want to login as admin and checkout all features?{' '}
-            <span>
-              <Link href='/contact'>
-                <a className='underline'>contact</a>
-              </Link>
-            </span>
-          </p>
-        </div>
+        <p className='my-5'>
+          Want to login as admin and checkout all features?{' '}
+          <span>
+            <Link href='/contact'>
+              <a className='underline'>contact</a>
+            </Link>
+          </span>
+        </p>
       </div>
       <ToastContainer />
     </>

@@ -86,7 +86,7 @@ const PlaceOrderPage = ({ token }) => {
 
                 return (
                   <div
-                    className='flex justify-between items-center my-5'
+                    className='md:flex justify-between items-center my-5'
                     key={i}
                   >
                     <div className='flex items-center'>
@@ -102,7 +102,7 @@ const PlaceOrderPage = ({ token }) => {
                         </a>
                       </Link>
                     </div>
-                    <div>
+                    <div className='my-5 md:my-0'>
                       <p>
                         {item?.qty} X ₹{item?.price} = ₹
                         {item?.qty * item?.price}{' '}

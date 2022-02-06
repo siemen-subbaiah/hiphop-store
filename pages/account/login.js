@@ -1,5 +1,4 @@
 import { MdOutlineAccountCircle } from 'react-icons/md';
-import { IoMdAlert } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Seo from '../../components/utils/Seo';
@@ -89,17 +88,14 @@ const LoginPage = () => {
             <a className='underline'>Register</a>
           </Link>
         </span>
-        <div className='my-5 flex items-center gap-2'>
-          <IoMdAlert className='h-5 w-5' />
-          <p>
-            Want to login as admin and checkout all features?{' '}
-            <span>
-              <Link href='/contact'>
-                <a className='underline'>contact</a>
-              </Link>
-            </span>
-          </p>
-        </div>
+        <p className='my-5'>
+          Want to login as admin and checkout all features?{' '}
+          <span>
+            <Link href='/contact'>
+              <a className='underline'>contact</a>
+            </Link>
+          </span>
+        </p>
       </div>
       <ToastContainer />
     </>

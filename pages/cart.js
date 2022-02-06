@@ -58,7 +58,10 @@ const CartPage = ({ token }) => {
               {cartItems.map((item, i) => {
                 return (
                   <>
-                    <div className='flex items-center md:my-8 mt-10' key={i}>
+                    <div
+                      className='flex items-center md:my-8 mt-10 place-self-start'
+                      key={i}
+                    >
                       <Image
                         src={item.image}
                         blurDataURL={item.image}
@@ -92,7 +95,10 @@ const CartPage = ({ token }) => {
                         />
                       </div>
                       <div className='cursor-pointer text-red-600 md:hidden block ml-5'>
-                        <MdDelete className='h-5 w-5' />
+                        <MdDelete
+                          className='h-5 w-5'
+                          onClick={() => dispatch(deleteItems(item.productId))}
+                        />
                       </div>
                     </div>
                     <p className='my-7 hidden md:block'>
@@ -109,7 +115,7 @@ const CartPage = ({ token }) => {
                 );
               })}
             </div>
-            <div className='my-10 md:flex items-center justify-between'>
+            <div className='my-10 flex items-center justify-between flex-wrap'>
               <Link href='/'>
                 <a className='btn bg-blue-500'>Continue Shopping</a>
               </Link>
