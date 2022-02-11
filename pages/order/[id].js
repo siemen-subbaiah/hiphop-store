@@ -214,9 +214,17 @@ const OrderDetailsPage = ({ data, token }) => {
                 </button>
               )}
               {!data?.isPaid && (
-                <button className='btn w-full' onClick={createCheckOutSession}>
-                  {loading ? 'Processing...' : 'Place order'}
-                </button>
+                <>
+                  <button
+                    className='btn w-full'
+                    onClick={createCheckOutSession}
+                  >
+                    {loading ? 'Processing...' : 'Place order'}
+                  </button>
+                  <p className='my-3 text-center'>
+                    Test Card : 4242424242424242
+                  </p>
+                </>
               )}
             </div>
           </div>
