@@ -156,7 +156,11 @@ const ProductDetailsPage = ({ info }) => {
                   Add to Cart
                 </button>
               ) : (
-                <button disabled className='btn bg-gray-500'>
+                <button
+                  disabled
+                  className='btn bg-gray-500'
+                  style={{ cursor: 'not-allowed' }}
+                >
                   Add to Cart
                 </button>
               )}
