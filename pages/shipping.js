@@ -9,7 +9,9 @@ const ShippingPage = () => {
       ? JSON.parse(localStorage.getItem('shippingAddress'))
       : null;
 
-  const [address, setAddress] = useState(shippingAddress?.address);
+  const [address, setAddress] = useState(
+    shippingAddress?.address ? shippingAddress?.address : 'test value'
+  );
   const [city, setCity] = useState(shippingAddress?.city);
   const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode);
   const [country, setCountry] = useState(shippingAddress?.country);

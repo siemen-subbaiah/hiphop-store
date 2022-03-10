@@ -10,9 +10,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../src/features/cart/cartReducer';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetailsPage = ({ info }) => {
   const rating = getRatingAvg(info);
+
+  const [reviewState, setReviewState] = useState(info?.reviews);
+
+  const handleStateDeletion = async (id) => {
+    const confirm = window.confirm('Do you want to delete this comment?');
+
+    if (confirm) {
+      const res = await fetch(`${API_URL}/reviews/${id}`, {
+        method: 'DELETE',
+      });
+
+      await res.json();
+
+      if (res.ok) {
+        toast.success('Comment deleted successfully');
+        setReviewState(reviewState.filter((item) => item.id !== id));
+      } else {
+        toast.error('Something went wrong,try again');
+      }
+    }
+  };
 
   const { user } = useSelector((state) => state.auth);
 
@@ -93,9 +116,11 @@ const ProductDetailsPage = ({ info }) => {
             <p className='my-2 md:w-3/4'>{info?.description}</p>
 
             <ul className='my-3'>
-              <li className='my-2'>
-                Status : {info?.isAvailable ? 'In Stock' : 'Out of Stock'}
-              </li>
+              {info?.isAvailable ? (
+                <li className='my-2'>Status : In Stock</li>
+              ) : (
+                <li className='my-2 font-bold'>Status : Out of Stock</li>
+              )}
               <li className='my-2'>Brand : {info?.brand}</li>
             </ul>
             <div className='my-5 flex gap-2 items-center'>
@@ -174,7 +199,13 @@ const ProductDetailsPage = ({ info }) => {
             <hr className='my-2' />
           </div>
         ) : (
-          info?.reviews?.map((item) => <Reviews review={item} key={item.id} />)
+          reviewState?.map((item) => (
+            <Reviews
+              review={item}
+              key={item.id}
+              handleStateDeletion={handleStateDeletion}
+            />
+          ))
         )}
         <h1 className='text-2xl my-3 text-gray-600'>WRITE A CUSTOMER REVIEW</h1>
 
@@ -194,6 +225,7 @@ const ProductDetailsPage = ({ info }) => {
           </Link>
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };

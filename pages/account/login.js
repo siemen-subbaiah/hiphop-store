@@ -75,19 +75,55 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {isLoading ? (
-            <button disabled className='btn my-3 w-full opacity-70'>
-              LOADING...
-            </button>
+            <>
+              <button disabled className='btn my-3 w-full opacity-70'>
+                LOADING...
+              </button>
+            </>
           ) : (
-            <button className='btn my-3 w-full'>SIGN IN</button>
+            <>
+              <button className='btn my-3 w-full'>SIGN IN</button>
+            </>
           )}
         </form>
-        <span>
-          New Customer?{' '}
-          <Link href='/account/register'>
-            <a className='underline'>Register</a>
-          </Link>
-        </span>
+        <button
+          className='btn bg-orange-600 my-3 mr-2'
+          onClick={() =>
+            dispatch(
+              login({ identifier: 'john@gmail.com', password: 'john123' })
+            )
+          }
+        >
+          SIGN IN AS GUEST
+        </button>
+        <button
+          className='btn bg-orange-700 my-3 mr-2'
+          onClick={() =>
+            dispatch(
+              login({ identifier: 'jane@gmail.com', password: 'jane123' })
+            )
+          }
+        >
+          SIGN IN AS ADMIN GUEST
+        </button>
+        <div className='mt-4'>
+          {router.query.redirect === 'shipping' ? (
+            <span>
+              New Customer?{' '}
+              <Link href='/account/register?redirect=shipping'>
+                <a className='underline'>Register</a>
+              </Link>
+            </span>
+          ) : (
+            <span>
+              New Customer?{' '}
+              <Link href='/account/register'>
+                <a className='underline'>Register</a>
+              </Link>
+            </span>
+          )}
+        </div>
+
         <p className='my-5'>
           Want to login as admin and checkout all features?{' '}
           <span>

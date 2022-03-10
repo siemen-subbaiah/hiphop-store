@@ -4,8 +4,10 @@ import Seo from '../../../components/utils/Seo';
 import { parseCookies } from '../../../helpers';
 import { API_URL } from '../../../config';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ReviewPage = ({ token }) => {
+const ReviewPage = ({ token, data }) => {
   const { user } = useSelector((state) => state.auth);
 
   const [reviewText, setreviewText] = useState('');
@@ -14,6 +16,7 @@ const ReviewPage = ({ token }) => {
   const [rating, setRating] = useState(3);
 
   const router = useRouter();
+  const slug = data?.slug;
 
   const {
     query: { id },
@@ -38,13 +41,13 @@ const ReviewPage = ({ token }) => {
         }),
       });
 
-      const data = await res.json();
+      await res.json();
 
       if (res.ok) {
-        router.push('/');
+        router.push(`/product/${slug}`);
       }
     } else {
-      alert('enter!');
+      toast.error('Please fill the fields');
     }
   };
 
@@ -53,7 +56,9 @@ const ReviewPage = ({ token }) => {
       <Seo title='Write a review' />
       <div className='container mx-auto md:px-80 px-4 my-5'>
         <div className='flex items-center gap-3'>
-          <h1 className='text-3xl'>Write a review</h1>
+          <h1 className='text-3xl'>
+            Write a review for <span className='underline'>{data?.name}</span>
+          </h1>
         </div>
         <form
           className='my-10 bg-white shadow-2xl p-5 border'
@@ -78,7 +83,9 @@ const ReviewPage = ({ token }) => {
       my-2
      focus:outline-none'
             >
-              <option selected>Select...</option>
+              <option value='' disabled>
+                Select...
+              </option>
               {ratingVal.map((rate) => {
                 return (
                   <option value={rate} key={rate}>
@@ -99,15 +106,29 @@ const ReviewPage = ({ token }) => {
           <button className='btn my-3 w-full'>SUBMIT</button>
         </form>
       </div>
+      <ToastContainer />
     </>
   );
 };
 
-export const getServerSideProps = async ({ req }) => {
+export const getServerSideProps = async ({ req, params: { id } }) => {
   const { token } = parseCookies(req);
+
+  const res = await fetch(`${API_URL}/products/${id}`);
+  const data = await res.json();
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
+      data,
       token,
     },
   };

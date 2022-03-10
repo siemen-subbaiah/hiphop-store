@@ -43,7 +43,6 @@ const SingleUserPage = ({ token, data }) => {
 
   const handleDelete = async (e) => {
     const confirm = window.confirm('Do you want to delete this user?');
-    console.log(confirm);
 
     if (confirm) {
       const res = await fetch(`${API_URL}/users/${id}`, {
