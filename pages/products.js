@@ -8,7 +8,7 @@ const ProductsPage = ({ data }) => {
   const products = sortByDate(data);
 
   const brandsList = [...new Set(products.map((product) => product.brand))];
-  const [sort, setSort] = useState('lth');
+  const [sort, setSort] = useState('');
   const [brand, setBrand] = useState('');
   const [filteredItems, setFilteredItems] = useState(products);
 
