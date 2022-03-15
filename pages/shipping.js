@@ -10,11 +10,17 @@ const ShippingPage = () => {
       : null;
 
   const [address, setAddress] = useState(
-    shippingAddress?.address ? shippingAddress?.address : 'test value'
+    shippingAddress?.address ? shippingAddress?.address : '#7,Apartment Road'
   );
-  const [city, setCity] = useState(shippingAddress?.city);
-  const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode);
-  const [country, setCountry] = useState(shippingAddress?.country);
+  const [city, setCity] = useState(
+    shippingAddress?.city ? shippingAddress?.city : 'Bangalore'
+  );
+  const [postalCode, setPostalCode] = useState(
+    shippingAddress?.postalCode ? shippingAddress?.postalCode : 560068
+  );
+  const [country, setCountry] = useState(
+    shippingAddress?.country ? shippingAddress?.country : 'India'
+  );
 
   const router = useRouter();
 

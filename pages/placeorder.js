@@ -132,7 +132,7 @@ const PlaceOrderPage = ({ token }) => {
                 className='btn w-full bg-green-500'
                 onClick={handleOrdering}
               >
-                Place Order
+                Confirm Order
               </button>
             </div>
           </div>

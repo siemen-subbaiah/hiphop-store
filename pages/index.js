@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Seo from '../components/utils/Seo';
 import Banner from '../components/home/Banner';
 import { API_URL } from '../config';
@@ -18,13 +19,18 @@ const index = ({ data }) => {
             <Products item={product} key={product.id} />
           ))}
         </div>
+        <div className='flex my-3 justify-center'>
+          <Link href='/products'>
+            <a className='btn'>View all products</a>
+          </Link>
+        </div>
       </div>
     </>
   );
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${API_URL}/products`);
+  const res = await fetch(`${API_URL}/products?_limit=6`);
   const data = await res.json();
 
   return {
