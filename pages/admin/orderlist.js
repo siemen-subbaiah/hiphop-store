@@ -10,7 +10,7 @@ const OrderListPage = ({ data }) => {
     <>
       <Seo title='Order List' />
       <div className='container mx-auto md:px-20 px-4'>
-        <h1 className='text-3xl'>ORDERS</h1>
+        <h1 className='text-3xl mt-5'>ORDERS</h1>
         <div className='my-5'>
           <AdminOrderTable orders={orders} />
         </div>

@@ -34,7 +34,9 @@ const ProductsPage = ({ data }) => {
     <>
       <Seo title='Products' />
       <div className='container md:px-20 px-4 mx-auto bg-[#E9EAED]'>
-        <h1 className='text-2xl mt-3 text-center'>All Collections</h1>
+        <div className='bg-blue-200 p-2 md:mt-4 my-4 rounded-lg md:w-1/5 md:mx-auto'>
+          <h1 className='text-2xl text-center'>All Collections</h1>
+        </div>
         <div className='md:grid grid-cols-12'>
           <div className='col-span-2'>
             <h1 className='text-2xl'>Filters</h1>

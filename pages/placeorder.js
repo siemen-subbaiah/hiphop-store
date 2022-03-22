@@ -150,6 +150,15 @@ const PlaceOrderPage = ({ token }) => {
 export const getServerSideProps = async ({ req }) => {
   const { token } = parseCookies(req);
 
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
       token,

@@ -13,7 +13,9 @@ const index = ({ data }) => {
       <Seo title='Home' />
       <Banner />
       <div className='container md:px-20 px-4 mx-auto bg-[#E9EAED]'>
-        <h1 className='text-2xl mt-3 text-center'>Latest Collections</h1>
+        <div className='bg-blue-200 p-2 md:mt-4 my-4 rounded-lg md:w-1/5 md:mx-auto'>
+          <h1 className='text-2xl text-center'>Latest Collections</h1>
+        </div>
         <div className='grid md:grid-cols-3 place-items-center my-5'>
           {products.map((product) => (
             <Products item={product} key={product.id} />

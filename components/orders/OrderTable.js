@@ -49,7 +49,6 @@ const OrderTable = ({ orders }) => {
               </thead>
               <tbody>
                 {orders?.map((order) => {
-                  console.log(order);
                   return (
                     <tr className='bg-gray-100 border-b' key={order?.id}>
                       <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>

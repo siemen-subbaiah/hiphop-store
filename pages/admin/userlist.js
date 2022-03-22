@@ -10,7 +10,7 @@ const UserListPage = ({ data }) => {
     <>
       <Seo title='User List' />
       <div className='container mx-auto md:px-20 px-4'>
-        <h1 className='text-3xl'>USERS</h1>
+        <h1 className='text-3xl mt-5'>USERS</h1>
         <div className='my-5'>
           <UsersTable users={users} />
         </div>

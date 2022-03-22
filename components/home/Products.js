@@ -7,7 +7,7 @@ const Products = ({ item }) => {
   const rating = getRatingAvg(item);
 
   return (
-    <section className='my-5  hover:scale-105 transition-all'>
+    <section className='my-5 hover:scale-105 transition-all'>
       <Link href={`/product/${item.slug}`}>
         <a>
           <Image
