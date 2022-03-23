@@ -113,14 +113,6 @@ const RegisterPage = () => {
             <a className='underline'>Login</a>
           </Link>
         </span>
-        <p className='my-5'>
-          Want to login as admin and checkout all features?{' '}
-          <span>
-            <Link href='/contact'>
-              <a className='underline'>contact</a>
-            </Link>
-          </span>
-        </p>
       </div>
       <ToastContainer />
     </>

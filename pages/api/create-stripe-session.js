@@ -1,12 +1,17 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const CreateStripeSession = async (req, res) => {
-  const { items, id } = req.body;
+  const { items, id, token } = req.body;
 
-  const redirectURL =
+  const successUrl =
     process.env.NODE_ENV === 'development'
-      ? `http://localhost:3000/order/${id}`
-      : `https://hiphop-store.vercel.app/order/${id}`;
+      ? `http://localhost:3000/success`
+      : `https://hiphop-store.vercel.app/success`;
+
+  const cancelUrl =
+    process.env.NODE_ENV === 'development'
+      ? `http://localhost:3000/cancel`
+      : `https://hiphop-store.vercel.app/cancel`;
 
   const transformedItems = items.map((item) => ({
     quantity: item.qty,
@@ -22,10 +27,14 @@ const CreateStripeSession = async (req, res) => {
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
+    metadata: {
+      order_id: id,
+      userToken: token,
+    },
     line_items: transformedItems,
     mode: 'payment',
-    success_url: `${redirectURL}?status=success`,
-    cancel_url: `${redirectURL}?status=cancel`,
+    success_url: successUrl,
+    cancel_url: cancelUrl,
   });
 
   res.json({ id: session.id });

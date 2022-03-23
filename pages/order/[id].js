@@ -57,33 +57,22 @@ const OrderDetailsPage = ({ data, token }) => {
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, id }),
+        body: JSON.stringify({ items, id: data?.id, token }),
       }
     );
+
     const datar = await checkoutSession.json();
 
-    if (checkoutSession.ok) {
-      const res = await fetch(`${API_URL}/orders/${data?.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ isPaid: true }),
-      });
-
-      const resdata = await res.json();
-
-      const result = await stripe.redirectToCheckout({
-        sessionId: datar.id,
-      });
-    }
-
-    setLoading(false);
+    const result = await stripe.redirectToCheckout({
+      sessionId: datar.id,
+    });
 
     if (result.error) {
       alert(result.error.message);
+      router.push('/cancel');
     }
+
+    setLoading(false);
   };
 
   return (
