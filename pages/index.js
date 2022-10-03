@@ -32,7 +32,7 @@ const index = ({ data }) => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${API_URL}/products?_limit=6`);
+  const res = await fetch(`${API_URL}/products?_limit=6&_sort=created_at:DESC`);
   const data = await res.json();
 
   return {
